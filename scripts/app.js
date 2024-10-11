@@ -5,9 +5,11 @@ const btnStart = document.querySelector('.btn-start')
 let timeoutId;
 
 // 對 timer 新增監聽器
-btnStart.addEventListener('click', () => {
+btnStart.addEventListener('click', (e) => {
+    // 按鈕 disable 避免重複減秒
+    btnStart.disabled = true;
     // setInterval
-    timeoutId = setInterval((e) => {
+    timeoutId = setInterval(() => {
 
         // 抓到 分跟秒
         let timerText = timer.innerHTML;
@@ -22,11 +24,10 @@ btnStart.addEventListener('click', () => {
         second = formatToTwoDigits(second);
 
         // 修改文字
-        timerText = timer.textContent = `${minute}:${second}`
+        timer.textContent = `${minute}:${second}`
 
     }, 1000)
 
-    log(e.target)
 })
 
 // 減秒 function：減少秒數、秒數歸零則扣分
@@ -36,6 +37,8 @@ function calTime(minute, second) {
     } else if (second == '00' && minute == '00') {
         clearInterval(timeoutId);
         console.log('結束');
+        // 按鈕恢復
+        btnStart.disabled = false;
     } else {
         minute = minute - 1;
         second = 59;

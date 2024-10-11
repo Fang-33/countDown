@@ -11,29 +11,24 @@ body {
 
 main {
   width: 50%;
-  display: flex;
   margin: auto;
-  justify-content: space-around;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   height: 100vh;
 }
 
 main .timer {
-
   font-family: "Raleway", sans-serif;
   font-size: 8em;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-}
 
 .btn-start {
   margin-top: 36px;
   width: 128px;
   height: 36px;
-  margin-right: auto;
   border: 0px;
   border-radius: 30px;
   background-color: #222;
@@ -46,4 +41,8 @@ main .timer {
 
 .btn-start:active {
   background-color: #000000;
+}
+
+.btn-start:disabled {
+  background-color: #b6b6b6;
 }
